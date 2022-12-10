@@ -1,0 +1,125 @@
+#container {
+    width: 550px;
+    height: 700px;
+    border-radius: 20px;
+    background-color: rgb(216, 216, 216);
+    position: absolute;
+    top: 50%;
+    transform: translate(3%, -50%);
+}
+
+
+
+.nav-flush .nav-link {
+    border-radius: 0;
+    color: #ff4040;
+}
+
+.nav-pills>li>a.active {
+    background-color: #ff4040 !important;
+}
+
+.dropdown-item:hover {
+    background-color: white;
+    color: black;
+}
+
+.dropdown-item.active {
+    background-color: #ff4040;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #ff4040;
+    border-color: #ff4040;
+}
+
+.btn-outline-primary {
+    color: #ff4040;
+    border-color: #ff4040;
+}
+
+.btn-primary:hover {
+    background-color: #9c2626;
+    border-color: #9c2626;
+}
+
+.btn-outline-primary:hover {
+    background-color: #9c2626;
+    border-color: #9c2626;
+}
+
+.btn-primary:focus {
+    background-color: #9c2626;
+    border-color: #9c2626;
+}
+
+.btn-outline-primary:focus {
+    background-color: #9c2626;
+    border-color: #9c2626;
+}
+
+.btn-primary[disabled] {
+    background-color: #ff4040;
+    border-color: #ff4040;
+}
+
+.btn-outline-primary[disabled] {
+    color: #ff4040;
+    border-color: #ff4040;
+}
+
+.btn-primary[disabled]:hover {
+    background-color: #9c2626;
+    border-color: #9c2626;
+}
+
+.btn-outline-primary[disabled]:hover {
+    background-color: #9c2626;
+    border-color: #9c2626;
+}
+
+.btn-primary[disabled]:focus {
+    background-color: #9c2626;
+    border-color: #9c2626;
+}
+
+.btn-outline-primary[disabled]:focus {
+    background-color: #9c2626;
+    border-color: #9c2626;
+}
+
+.pages {
+    display: none;
+    height: 650px;
+    overflow: auto;
+}
+
+.homepage {
+    display: block;
+    overflow: auto;
+}
+
+.no-vehicle {
+    margin-top: 30px;
+    display: none;
+    font-size: 20px;
+    color: black;
+}
+
+.no-vehicle-impound {
+    margin-top: 30px;
+    display: none;
+    font-size: 20px;
+    color: black;
+}
+
+.no-function {
+    margin-top: 30px;
+    font-size: 20px;
+    color: black;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}

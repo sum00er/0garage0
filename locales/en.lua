@@ -1,0 +1,20 @@
+Locales["en"] = {
+    ["parking_blip_name"] = 'Garage',
+    ["Impound_blip_name"] = 'Impound',
+    ["access_parking"] = 'press [E] to access the car park.',
+    ["access_Impound"] = 'press [E] to access the impound. (Fee: $%s)。',
+    ["park_veh"] = 'press [E] to park the vehicle.',
+    ["not_owning_veh"] = 'You do not own this vehicle',
+    ['veh_released'] = 'Successfully Retrieved Vehicle.',
+    ['veh_stored'] = 'Successfully Stored Vehicle',
+    ['no_veh_Impound'] = 'No vehicles in the impound',
+    ['veh_block'] = 'Unable to retrieve vehicle, Spawn Position is blocked.',
+    ['pay_Impound_bill'] = 'Successfully Paid ~g~$%s~s~ to the Impound.',
+    ['missing_money'] = 'You don`t have enough money.',
+    --nui
+    ['plate'] = 'Plate',
+    ['health'] = 'Condition',
+    ['retrieve'] = 'Retrieve',
+    ['uploadphoto'] = 'Upload Photo',
+    ['rename'] = 'Rename',
+}
