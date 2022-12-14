@@ -12,7 +12,7 @@ Garage Page: ![image](https://user-images.githubusercontent.com/113702628/207255
 2. add ensure 0garage0 to your server.cfg
 
 ### Requirement
-* es_extended
+* ESX Legacy
 * oxmysql
 
 ### Support
