@@ -76,6 +76,11 @@ $(window).ready(function () {
             );
             $('.no-vehicle').css("display", "none");
         } else {
+            $('#container').data('spawnpoint', data.spawnPoint);
+            $('.vehicle').html("");
+            $('.impound').html(
+                getVehicles(data.vehiclesImpoundedList, 'impound', 'impound')
+            );
             $('.no-vehicle').css("display", "block");
         }
         $(".pages").css("display", "none");
