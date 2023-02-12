@@ -3,6 +3,12 @@ local LastMarker, LastPart, thisGarage, thisPound = nil, nil, nil, nil
 local next = next
 local nearMarker, menuIsShowed = false, false
 local vehiclesList, vehiclesImpoundedList = {}, {}
+local hide = true
+
+if Config.oldESX then
+    ESX = nil
+    TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+end
 
 RegisterNetEvent('0garage0:closemenu')
 AddEventHandler('0garage0:closemenu', function()
@@ -15,10 +21,28 @@ AddEventHandler('0garage0:closemenu', function()
     })
 
     if not menuIsShowed and thisGarage then
-        ESX.TextUI(_U('access_parking'))
+        local text = _U('access_parking')
+        hide = false
+        if Config.oldESX and text then
+            while not hide do
+                ESX.ShowHelpNotification(text)
+                Citizen.Wait(0)
+            end
+        else
+            ESX.TextUI(text)
+        end
     end
     if not menuIsShowed and thisPound then
-        ESX.TextUI(_U('access_Impound', Config.ImpoundCost))
+        local text = (_U('access_Impound', Config.ImpoundCost))
+        hide = false
+        if Config.oldESX and text then
+            while not hide do
+                ESX.ShowHelpNotification(text)
+                Citizen.Wait(0)
+            end
+        else
+            ESX.TextUI(text)
+        end
     end
 end)
 
@@ -33,12 +57,23 @@ RegisterNUICallback('spawnVehicle', function(data, cb)
         y = data.spawnPoint.y,
         z = data.spawnPoint.z
     }
-
+    if Config.retrieveVerify then
+        local vehpool = ESX.Game.GetVehicles()
+        local plate = ESX.Math.Trim(data.vehicleProps.plate)
+        for k, v in pairs(vehpool) do
+            local p =  ESX.Math.Trim(GetVehicleNumberPlateText(v))
+            if p == plate then
+                    ESX.ShowNotification(_U('cannot_take'))
+                    cb('ok')
+                return
+            end
+        end
+    end
     if thisGarage then
 
         if ESX.Game.IsSpawnPointClear(spawnCoords, 2.5) then
             ESX.Game.SpawnVehicle(data.vehicleProps.model, spawnCoords, data.spawnPoint.heading, function(vehicle)
-                TaskWarpPedIntoVehicle(ESX.PlayerData.ped, vehicle, -1)
+                TaskWarpPedIntoVehicle(PlayerPedId(), vehicle, -1)
                 ESX.Game.SetVehicleProperties(vehicle, data.vehicleProps)
                 SetVehicleEngineOn(vehicle, (not GetIsVehicleEngineRunning(vehicle)), true, true)
             end)
@@ -49,7 +84,10 @@ RegisterNUICallback('spawnVehicle', function(data, cb)
             TriggerEvent('0garage0:closemenu')
 
             ESX.ShowNotification(_U('veh_released'))
-            ESX.HideUI()
+            hide = true
+            if not Config.oldESX then
+                ESX.HideUI()
+            end
 
         else
             ESX.ShowNotification(_U('veh_block'), 'error')
@@ -64,7 +102,7 @@ RegisterNUICallback('spawnVehicle', function(data, cb)
 
                     ESX.Game.SpawnVehicle(data.vehicleProps.model, spawnCoords, data.spawnPoint.heading,
                         function(vehicle)
-                            TaskWarpPedIntoVehicle(ESX.PlayerData.ped, vehicle, -1)
+                            TaskWarpPedIntoVehicle(PlayerPedId(), vehicle, -1)
                             ESX.Game.SetVehicleProperties(vehicle, data.vehicleProps)
                             SetVehicleEngineOn(vehicle, (not GetIsVehicleEngineRunning(vehicle)), true, true)
                         end)
@@ -73,7 +111,10 @@ RegisterNUICallback('spawnVehicle', function(data, cb)
 
                     TriggerServerEvent('0garage0:updateOwnedVehicle', false, nil, data.vehicleProps)
                     TriggerEvent('0garage0:closemenu')
-                    ESX.HideUI()
+                    hide = true
+                    if not Config.oldESX then
+                        ESX.HideUI()
+                    end
                 else
                     ESX.ShowNotification(_U('veh_block'), 'error')
                 end
@@ -121,26 +162,39 @@ CreateThread(function()
 end)
 
 AddEventHandler('0garage0:hasEnteredMarker', function(name, part)
+    local text
+    hide =false
     if part == 'EntryPoint' then
         local garage = Config.Garages[name]
         thisGarage = garage
-        ESX.TextUI(_U('access_parking'))
+        text = _U('access_parking')
     elseif part == 'StopPoint' then
         local garage = Config.Garages[name]
         thisGarage = garage
-        ESX.TextUI(_U('park_veh'))
+        text = _U('park_veh')
     elseif part == 'GetOutPoint' then
         local pound = Config.Impounds[name]
         thisPound = pound
 
-        ESX.TextUI(_U('access_Impound', Config.ImpoundCost))
+        text = _U('access_Impound', Config.ImpoundCost)
+    end
+    if Config.oldESX then
+        while not hide do
+            ESX.ShowHelpNotification(text)
+            Citizen.Wait(0)
+        end
+    else
+        ESX.TextUI(text)
     end
 end)
 
 AddEventHandler('0garage0:hasExitedMarker', function()
     thisGarage = nil
     thisPound = nil
-    ESX.HideUI()
+    hide = true
+    if not Config.oldESX then
+        ESX.HideUI()
+    end
     TriggerEvent('0garage0:closemenu')
 end)
 
@@ -149,7 +203,7 @@ CreateThread(function()
     while true do
         local sleep = 500
 
-        local playerPed = ESX.PlayerData.ped
+        local playerPed = PlayerPedId()
         local coords = GetEntityCoords(playerPed)
         local inVehicle = IsPedInAnyVehicle(playerPed, false)
 
@@ -205,7 +259,7 @@ end)
 CreateThread(function()
     while true do
         if nearMarker then
-            local playerPed = ESX.PlayerData.ped
+            local playerPed = PlayerPedId()
             local coords = GetEntityCoords(playerPed)
             local isInMarker = false
             local currentMarker = nil
@@ -271,10 +325,10 @@ CreateThread(function()
                                                 locales = {
                                                     carplate = _U('plate'),
                                                     health = _U('health'),
+                                                    fuel = _U('fuel'),
                                                     retrieve = _U('retrieve'),
                                                     uploadphoto = _U('uploadphoto'),
                                                     rename = _U('rename'),
-                                                    
                                                 }
                                             })
                                         else
@@ -286,6 +340,7 @@ CreateThread(function()
                                                 locales = {
                                                     carplate = _U('plate'),
                                                     health = _U('health'),
+                                                    fuel = _U('fuel'),
                                                     retrieve = _U('retrieve'),
                                                     uploadphoto = _U('uploadphoto'),
                                                     rename = _U('rename'),
@@ -297,7 +352,10 @@ CreateThread(function()
                                     SetNuiFocus(true, true)
 
                                     if menuIsShowed then
-                                        ESX.HideUI()
+                                        hide = true
+                                        if not Config.oldESX then
+                                            ESX.HideUI()
+                                        end
                                     end
                                 else
                                     menuIsShowed = true
@@ -326,6 +384,7 @@ CreateThread(function()
                                                 locales = {
                                                     carplate = _U('plate'),
                                                     health = _U('health'),
+                                                    fuel = _U('fuel'),
                                                     retrieve = _U('retrieve'),
                                                     uploadphoto = _U('uploadphoto'),
                                                     rename = _U('rename'),
@@ -338,6 +397,7 @@ CreateThread(function()
                                                 locales = {
                                                     carplate = _U('plate'),
                                                     health = _U('health'),
+                                                    fuel = _U('fuel'),
                                                     retrieve = _U('retrieve'),
                                                     uploadphoto = _U('uploadphoto'),
                                                     rename = _U('rename'),
@@ -349,7 +409,10 @@ CreateThread(function()
                                     SetNuiFocus(true, true)
 
                                     if menuIsShowed then
-                                        ESX.HideUI()
+                                        hide = true
+                                        if not Config.oldESX then
+                                            ESX.HideUI()
+                                        end
                                     end
                                 end
                             end)
@@ -373,7 +436,10 @@ CreateThread(function()
                                     ESX.Game.DeleteVehicle(vehicle)
                                     TriggerServerEvent('0garage0:updateOwnedVehicle', true, nil,
                                         vehicleProps)
-                                        ESX.HideUI()
+                                        hide = true
+                                        if not Config.oldESX then
+                                            ESX.HideUI()
+                                        end
                                 else
                                     ESX.ShowNotification(_U('not_owning_veh'), 'error')
                                 end
@@ -441,6 +507,7 @@ CreateThread(function()
                                         locales = {
                                             carplate = _U('plate'),
                                             health = _U('health'),
+                                            fuel = _U('fuel'),
                                             retrieve = _U('retrieve'),
                                             uploadphoto = _U('uploadphoto'),
                                             rename = _U('rename'),
@@ -455,6 +522,7 @@ CreateThread(function()
                                             locales = {
                                                 carplate = _U('plate'),
                                                 health = _U('health'),
+                                                fuel = _U('fuel'),
                                                 retrieve = _U('retrieve'),
                                                 uploadphoto = _U('uploadphoto'),
                                                 rename = _U('rename'),
@@ -467,7 +535,10 @@ CreateThread(function()
                                     SetNuiFocus(true, true)
 
                                     if menuIsShowed then
-                                     ESX.HideUI()
+                                        hide = true
+                                        if not Config.oldESX then
+                                            ESX.HideUI()
+                                        end
                                     end
                                 end)
                             else
