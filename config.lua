@@ -1,11 +1,15 @@
 Config = {}
 Config.Locale = "en"
 
+Config.oldESX = false
+
 Config.DrawDistance = 10.0
 
 Config.DrawDistanceStop = 20.0
 
 Config.ImpoundCost = 3000
+
+Config.retrieveVerify = true
 
 Config.Markers = {
 	EntryPoint = {
