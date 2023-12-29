@@ -14,6 +14,7 @@ Locales["en"] = {
     --nui
     ['plate'] = 'Plate',
     ['health'] = 'Condition',
+    ['fuel'] = 'Fuel level',
     ['retrieve'] = 'Retrieve',
     ['uploadphoto'] = 'Upload Photo',
     ['rename'] = 'Rename',
