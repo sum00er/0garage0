@@ -70,7 +70,7 @@ $(window).ready(function () {
 
                 $('#container').data('spawnpoint', data.spawnPoint)
                 $('.vehicle').html(
-                    getVehicles(data.vehiclesList, 'garage', 'garage')
+                    getVehicles(data.vehiclesList, 'garage', 'impound')
                 )
                 $('.no-vehicle').css("display", "none");
             } else {
@@ -79,7 +79,7 @@ $(window).ready(function () {
             }
             if (data.vehiclesImpoundedList != true) {
                 $('.impound').html(
-                    getVehicles(data.vehiclesImpoundedList, 'impound', 'garage')
+                    getVehicles(data.vehiclesImpoundedList, 'impound', 'impound')
                 )
                 $('.no-vehicle-impound').css("display", "none");
             } else {
