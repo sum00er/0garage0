@@ -11,6 +11,8 @@ Locales["en"] = {
     ['veh_block'] = 'Unable to retrieve vehicle, Spawn Position is blocked.',
     ['pay_Impound_bill'] = 'Successfully Paid ~g~$%s~s~ to the Impound.',
     ['missing_money'] = 'You don`t have enough money.',
+    ['delete_existing'] = 'Deleted existing vehicle',
+    ['still_existing'] = 'Fail to retrieve vehicle as vehicle still exists',
     --nui
     ['plate'] = 'Plate',
     ['health'] = 'Condition',
