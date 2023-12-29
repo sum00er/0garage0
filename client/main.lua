@@ -75,7 +75,7 @@ function OpenGarageMenu(isImpound, SpawnPoint, parking)
             print(#vehicles[n])
             for i = 1, #vehicles[n], 1 do
                 local model
-                local vname = GetDisplayNameFromVehicleModel(vehicles[n][i].model)
+                local vname = GetDisplayNameFromVehicleModel(vehicles[n][i].vehicle.model)
                 model = GetLabelText(vname)
                 if model == 'NULL' then
                     model = vname
