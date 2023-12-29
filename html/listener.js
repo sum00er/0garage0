@@ -78,6 +78,7 @@ $(window).ready(function () {
                 $('.no-vehicle').css("display", "block");
             }
             if (data.vehiclesImpoundedList != true) {
+                $('#container').data('spawnpoint', data.spawnPoint)
                 $('.impound').html(
                     getVehicles(data.vehiclesImpoundedList, 'impound', 'impound')
                 )
