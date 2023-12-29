@@ -14,6 +14,7 @@ Locales["zh"] = {
     --nui
     ['plate'] = '車牌',
     ['health'] = '耐久度',
+    ['fuel'] = '油量',
     ['retrieve'] = '領出',
     ['uploadphoto'] = '上傳照片',
     ['rename'] = '改名',
