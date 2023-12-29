@@ -1,3 +1,4 @@
+ESX = exports["es_extended"]:getSharedObject()
 ESX.RegisterServerCallback('0garage0:getVehicles', function(source, cb, parking)
 	local xPlayer  = ESX.GetPlayerFromId(source)
 
