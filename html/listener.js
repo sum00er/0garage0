@@ -45,7 +45,7 @@ $(window).ready(function () {
             $(".homepage").css("display", "block");
             $(".nav").removeClass("active nav-item");
             $(".nav-home").addClass("active nav-item");
-            if (data.vehiclesList != undefined) {
+            if (data.vehiclesList != true) {
 
                 $('#container').data('spawnpoint', data.spawnPoint)
                 $('.vehicle').html(
@@ -56,7 +56,7 @@ $(window).ready(function () {
                 $('.vehicle').html("");
                 $('.no-vehicle').css("display", "block");
             }
-            if (data.vehiclesImpoundedList != undefined) {
+            if (data.vehiclesImpoundedList != true) {
                 $('.impound').html(
                     getVehicles(data.vehiclesImpoundedList, 'impound', 'garage')
                 )
@@ -66,22 +66,25 @@ $(window).ready(function () {
                 $('.no-vehicle-impound').css("display", "block");
             }
         } else if (data.type === 'impound') {
-            if (data.vehiclesList != undefined) {
-                $('#container').data('spawnpoint', data.spawnPoint);
+            if (data.vehiclesList != true) {
+
+                $('#container').data('spawnpoint', data.spawnPoint)
                 $('.vehicle').html(
-                    getVehicles(data.vehiclesList, 'garage', 'impound')
-                );
-                $('.impound').html(
-                    getVehicles(data.vehiclesImpoundedList, 'impound', 'impound')
-                );
+                    getVehicles(data.vehiclesList, 'garage', 'garage')
+                )
                 $('.no-vehicle').css("display", "none");
             } else {
-                $('#container').data('spawnpoint', data.spawnPoint);
                 $('.vehicle').html("");
-                $('.impound').html(
-                    getVehicles(data.vehiclesImpoundedList, 'impound', 'impound')
-                );
                 $('.no-vehicle').css("display", "block");
+            }
+            if (data.vehiclesImpoundedList != true) {
+                $('.impound').html(
+                    getVehicles(data.vehiclesImpoundedList, 'impound', 'garage')
+                )
+                $('.no-vehicle-impound').css("display", "none");
+            } else {
+                $('.impound').html("");
+                $('.no-vehicle-impound').css("display", "block");
             }
             $(".pages").css("display", "none");
             $(".impoundpage").css("display", "block");
