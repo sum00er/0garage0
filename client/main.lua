@@ -42,7 +42,6 @@ Citizen.CreateThread(function()
                         Config.TextUI(_U(k, Config.ImpoundCost))
                         textui = true
                         if IsControlJustReleased(0, 38) then
-                            lib.hideTextUI()
                             if k == 'EntryPoint' then
                                 OpenGarageMenu(false, v.SpawnPoint, parking)
                             elseif k == 'StopPoint' then
