@@ -1,9 +1,9 @@
 Locales["zh"] = {
     ["parking_blip_name"] = '停車場',
     ["Impound_blip_name"] = '扣押場',
-    ["access_parking"] = '按 [E] 進入停車場。',
-    ["access_Impound"] = '按 [E] 進入扣押場 (領出費用 $%s)。',
-    ["park_veh"] = '按 [E] 將載具停入停車場。',
+    ["EntryPoint"] = '按 [E] 進入停車場。',
+    ["GetOutPoint"] = '按 [E] 進入扣押場 (領出費用 $%s)。',
+    ["StopPoint"] = '按 [E] 將載具停入停車場。',
     ["not_owning_veh"] = '這台載具不屬於你！',
     ['veh_released'] = '成功領出載具。',
     ['veh_stored'] = '成功停入載具。',
