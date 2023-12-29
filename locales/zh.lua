@@ -11,6 +11,8 @@ Locales["zh"] = {
     ['veh_block'] = '無法領出載具，生成點被擋住了。',
     ['pay_Impound_bill'] = '成功支付了 ~g~$%s~s~ 給扣押場。',
     ['missing_money'] = '你沒有足夠的現金。',
+    ['delete_existing'] = '已刪除仍存在的車輛',
+    ['still_existing'] = '車輛依然存在，無法領取',
     --nui
     ['plate'] = '車牌',
     ['health'] = '耐久度',
