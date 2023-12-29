@@ -106,3 +106,9 @@ ESX.RegisterServerCallback('0garage0:delVehBeforeRetrieve', function(source, cb,
 		cb(true)
 	end
 end)
+
+ESX.RegisterServerCallback('0garage0:checkMoney', function(source, cb, amount)
+	local xPlayer = ESX.GetPlayerFromId(source)
+
+	cb(xPlayer.getMoney() >= amount)
+end)
