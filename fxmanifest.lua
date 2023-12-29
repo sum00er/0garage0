@@ -1,8 +1,7 @@
 fx_version 'cerulean'
 game 'gta5'
 
-author 'ESX-Framework modified by sum00er'
-description 'Modified ESX Garage System for ESX Legacy'
+author 'sum00er'
 lua54 'yes'
 
 shared_script '@es_extended/imports.lua'
