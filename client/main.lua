@@ -101,19 +101,12 @@ function OpenGarageMenu(isImpound, SpawnPoint, parking)
             vehiclesImpoundedList = not next(NUIvehicleList[1]) or {json.encode(NUIvehicleList[1])},
             spawnPoint = SpawnPoint,
             locales = {
-                parking =  _U('park'),
-                Impound = _U('Impound'),
-                carname = _U('name'),
                 carplate = _U('plate'),
                 health = _U('health'),
                 fuel = _U('fuel'),
                 retrieve = _U('retrieve'),
                 uploadphoto = _U('uploadphoto'),
                 rename = _U('rename'),
-                inputname = _U('inputname'),
-                cancel = _U('cancel'),
-                upload = _U('upload'),
-                change = _U('change')
             }
         })
     end, parking)
