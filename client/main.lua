@@ -109,6 +109,7 @@ function OpenGarageMenu(isImpound, SpawnPoint, parking)
         })
     end, parking)
 end
+exports('OpenGarageMenu', OpenGarageMenu)
 
 function StoreVehicle(parking)
     local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
@@ -132,6 +133,7 @@ function CloseMenu()
         close = true
     })
 end
+exports('StoreVehicle', StoreVehicle)
 
 --NUI
 RegisterNUICallback('close', function(data, cb)
