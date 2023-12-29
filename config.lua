@@ -32,42 +32,42 @@ end
 
 Config.Markers = {
 	EntryPoint = {
-		Type = 27,
+		Type = 21,
 		Size = {
 			x = 1.0,
 			y = 1.0,
 			z = 0.5,
 		},
 		Color = {
-			r = 187,
-			g = 38,
-			b = 73,
+			r = 50,
+			g = 200,
+			b = 50,
 		},
 	},
 	StopPoint = {
-		Type = 27,
-		Size = {
-			x = 2.0,
-			y = 2.0,
-			z = 0.5,
-		},
-		Color = {
-			r = 187,
-			g = 38,
-			b = 73,
-		},
-	},
-	GetOutPoint = { 
-		Type = 27,
+		Type = 21,
 		Size = {
 			x = 1.0,
 			y = 1.0,
 			z = 0.5,
 		},
 		Color = {
-			r = 187,
-			g = 38,
-			b = 73,
+			r = 50,
+			g = 200,
+			b = 50,
+		},
+	},
+	GetOutPoint = {
+		Type = 21,
+		Size = {
+			x = 1.0,
+			y = 1.0,
+			z = 0.5,
+		},
+		Color = {
+			r = 200,
+			g = 51,
+			b = 51,
 		},
 	},
 }
