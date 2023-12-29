@@ -72,7 +72,6 @@ function OpenGarageMenu(isImpound, SpawnPoint, parking)
         local NUIvehicleList = {{}, {}}
         for n = 0, 1 do
             local n = tostring(n)
-            print(#vehicles[n])
             for i = 1, #vehicles[n], 1 do
                 local model
                 local vname = GetDisplayNameFromVehicleModel(vehicles[n][i].vehicle.model)
