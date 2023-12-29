@@ -3,8 +3,6 @@ Config.Locale = "en"
 
 Config.DrawDistance = 10.0
 
-Config.DrawDistanceStop = 20.0
-
 Config.ImpoundCost = 3000
 
 Config.SeperateGarage = false
