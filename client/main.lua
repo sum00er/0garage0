@@ -33,7 +33,7 @@ Citizen.CreateThread(function()
                 local dist = #(coords - n)
                 if dist < Config.DrawDistance then
                     sleep = false
-                    DrawMarker(Config.Markers[k].Type, n.x, n.y, n.z - 0.9, 0.0, 0.0,
+                    DrawMarker(Config.Markers[k].Type, n.x, n.y, n.z, 0.0, 0.0,
                         0.0, 0, 0.0, 0.0, Config.Markers[k].Size.x, Config.Markers[k].Size.y,
                         Config.Markers[k].Size.z, Config.Markers[k].Color.r,
                         Config.Markers[k].Color.g, Config.Markers[k].Color.b, 255, false, true, 2, false,
