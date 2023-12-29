@@ -93,12 +93,12 @@ ESX.RegisterServerCallback('0garage0:delVehBeforeRetrieve', function(source, cb,
 			if DoesEntityExist(canDel) then
 				DeleteEntity(canDel)
 			end
-			TriggerClientEvent('esx:showNotification', source, '已刪除仍存在的車輛')
+			TriggerClientEvent('esx:showNotification', source, _U('delete_existing'))
 			cb(true) 
 		elseif not found then
 			cb(true)
 		else
-			TriggerClientEvent('esx:showNotification', source, '車輛依然存在，無法領取')
+			TriggerClientEvent('esx:showNotification', source, _U('still_existing'))
 			cb(false)
 		end
 	else
