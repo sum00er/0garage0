@@ -6,7 +6,7 @@ ESX.RegisterServerCallback('0garage0:getVehicles', function(source, cb, parking)
 
 		local vehicles = {['0'] = {}, ['1'] = {}}
 		for i = 1, #result, 1 do
-			if (not result[i].image and not result[i].label) or type(result[i].stored) ~= 'number' then
+			if type(result[i].stored) ~= 'number' then
 				print('[ERROR] Please run SQL before using the script')
 				return
 			end
@@ -14,8 +14,6 @@ ESX.RegisterServerCallback('0garage0:getVehicles', function(source, cb, parking)
 				table.insert(vehicles[tostring(result[i].stored)], {
 					vehicle 	= json.decode(result[i].vehicle),
 					plate 		= result[i].plate,
-					image		= result[i].image,
-					label		= result[i].label 
 				})
 			end
 		end
