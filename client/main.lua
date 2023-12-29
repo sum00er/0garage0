@@ -76,22 +76,16 @@ function OpenGarageMenu(isImpound, SpawnPoint, parking)
             print(#vehicles[n])
             for i = 1, #vehicles[n], 1 do
                 local model
-                if vehicles[n][i].label == nil then
-                    local vname = GetDisplayNameFromVehicleModel(vehicles[n][i].model)
-                    model = GetLabelText(vname)
-                    if model == 'NULL' then
-                        model = vname
-                    end
-                    TriggerServerEvent('0garage0:updatename', vehicles[n][i].plate, model)
-                    model = string.sub(model, 1, 10)
-                else
-                    model = vehicles[n][i].label
+                local vname = GetDisplayNameFromVehicleModel(vehicles[n][i].model)
+                model = GetLabelText(vname)
+                if model == 'NULL' then
+                    model = vname
                 end
+                model = string.sub(model, 1, 10)
                 table.insert(NUIvehicleList[(tonumber(n) + 1)], {
                     model = model,
                     plate = vehicles[n][i].plate,
                     props = vehicles[n][i].vehicle,
-                    image =  vehicles[n][i].image
                 })
             end
         end
