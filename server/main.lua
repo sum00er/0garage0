@@ -111,3 +111,11 @@ ESX.RegisterServerCallback('0garage0:checkMoney', function(source, cb, amount)
 
 	cb(xPlayer.getMoney() >= amount)
 end)
+
+RegisterNetEvent('impoundVeh:sv')
+AddEventHandler('impoundVeh:sv', function(entity)
+	local Vehicle = NetworkGetEntityFromNetworkId(entity)
+	if DoesEntityExist(Vehicle) then
+		DeleteEntity(Vehicle)
+	end
+end)
