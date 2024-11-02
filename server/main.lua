@@ -109,7 +109,7 @@ end)
 ESX.RegisterServerCallback('0garage0:checkMoney', function(source, cb, amount)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
-	cb(xPlayer.getMoney() >= amount)
+	cb(xPlayer.getMoney())
 end)
 
 RegisterNetEvent('impoundVeh:sv')
