@@ -66,9 +66,9 @@ Citizen.CreateThread(function()
     end
 end)
 
-function OpenGarageMenu(isImpound, SpawnPoint, parking)
+function OpenGarageMenu(isimpound, SpawnPoint, parking)
     isInMenu = true
-    isImpound = isImpound
+    isImpound = isimpound
     ESX.TriggerServerCallback('0garage0:getVehicles', function(vehicles)
         local NUIvehicleList = {{}, {}}
         for n = 0, 1 do
